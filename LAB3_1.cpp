@@ -3,62 +3,60 @@
 
 using namespace std;
 
-float circle(float radius);
-float rectangle(float legnth, float width);
-float square(float length);
+float area_circle(float radius);
+float area_rectangle(float legnth, float width);
+float area_square(float length);
+
+struct Circle {
+    float radius;
+};
+
+struct Rectangle {
+    float length, width;
+};
+
+struct Square {
+    float length;
+};
 
 int main() {
 
-    float radius;
+    Circle circle;
+    Rectangle rectangle;
+    Square square;
+
     cout << "Input radius of the pool: ";
-    cin >> radius;
+    cin >> circle.radius;
 
-    float area_circle;
-    area_circle = circle(radius);
-
-    float length, width;
     cout << "\nInput length of the rectangular building : ";
-    cin >> length;
+    cin >> rectangle.length;
 
     cout << "Input width of the rectangular building : ";
-    cin >> width;
+    cin >> rectangle.width;
 
-    float area_rectangle;
-    area_rectangle = rectangle(length, width);
-
-    float length_square;
     cout << "\nInput length of the square building : ";
-    cin >> length_square;
-
-    float area_square;
-    area_square = square(length_square);
+    cin >> square.length;
 
     cout << "\nTotal area of the garden : " << 15 * 28;
 
-    float total_area;
     cout << "\nTotal area of the garden without the pool and the two buildings : ";
 
-    total_area = 420.0 - area_circle - area_rectangle - area_square;
+    float total_area;
+    total_area = 420.0 - area_circle(circle.radius) - area_rectangle(rectangle.length, rectangle.width) - area_square(square.length);
 
     cout << setiosflags(ios::fixed) << setprecision(2) << total_area << "\n";
 
     return 0;
 }
 
-float circle(float radius) {
-
+float area_circle(float radius) {
     return 22/7.0 * radius * radius;
-
 }
 
-float rectangle(float length, float width) {
-
+float area_rectangle(float length, float width) {
     return length * width;
-
 }
 
-float square(float length) {
-
+float area_square(float length) {
     return length * length;
-
 }
